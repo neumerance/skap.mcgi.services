@@ -4,9 +4,9 @@
   </main>
 </template>
 <script setup>
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive } from 'vue'
 
-const componentData = reactive({ buzzing: false });
+const componentData = reactive({ buzzing: false })
 </script>
 <style lang="scss" scoped>
 main {

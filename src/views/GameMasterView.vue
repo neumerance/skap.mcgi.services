@@ -1,12 +1,12 @@
 <template>
   <main>
-    <JoinGame game-id="12345" playerId="player-1" />
-    <BuzzerButton playerId="player-1" />
+    <JoinGame game-id="12345" playerId="game-master-1" />
+    <ToggleBuzzerButtons game-id="12345" playerId="game-master-1" />
   </main>
 </template>
 <script setup>
 import JoinGame from '@/components/JoinGame.vue'
-import BuzzerButton from '@/components/BuzzerButton.vue'
+import ToggleBuzzerButtons from '@/components/GameMaster/ToggleBuzzerButtons.vue'
 </script>
 <style lang="scss" scoped>
 main {
