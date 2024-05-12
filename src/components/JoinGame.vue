@@ -25,7 +25,7 @@ gameChannel.onJoined = (message) => {
 gameChannel.listen()
 
 onMounted(() => {
-  gameChannel.join(props.playerId)
+  gameChannel.join()
 })
 </script>
 <style lang="scss" scoped>

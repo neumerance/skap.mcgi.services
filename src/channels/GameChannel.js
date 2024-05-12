@@ -12,8 +12,8 @@ class GameChannel extends BaseChannel {
     this.socket.on('joined-game', this.onJoined)
   }
 
-  join(playerId) {
-    this.socket.emit('join-game', { playerId, gameId: this.gameId })
+  join(message = {}) {
+    this.socket.emit('join-game', { gameId: this.gameId, ...message })
   }
 }
 
