@@ -26,25 +26,25 @@
 
     <div v-if="pageData.gameJoined">
       <div class="questions">
-        <button class="button is-small" @click="gameSequenceChannel.newQuestion('Q1')">
+        <button class="button is-small" @click="gameSequenceChannel.newQuestion('1')">
           Question #1
         </button>
-        <button class="button is-small" @click="gameSequenceChannel.newQuestion('Q2')">
+        <button class="button is-small" @click="gameSequenceChannel.newQuestion('2')">
           Question #2
         </button>
-        <button class="button is-small" @click="gameSequenceChannel.newQuestion('Q3')">
+        <button class="button is-small" @click="gameSequenceChannel.newQuestion('3')">
           Question #3
         </button>
-        <button class="button is-small" @click="gameSequenceChannel.newQuestion('Q4')">
+        <button class="button is-small" @click="gameSequenceChannel.newQuestion('4')">
           Question #4
         </button>
-        <button class="button is-small" @click="gameSequenceChannel.newQuestion('Q5')">
+        <button class="button is-small" @click="gameSequenceChannel.newQuestion('5')">
           Question #5
         </button>
-        <button class="button is-small" @click="gameSequenceChannel.newQuestion('Q6')">
+        <button class="button is-small" @click="gameSequenceChannel.newQuestion('6')">
           Question #6
         </button>
-        <button class="button is-small" @click="gameSequenceChannel.newQuestion('Q7')">
+        <button class="button is-small" @click="gameSequenceChannel.newQuestion('7')">
           Question #7
         </button>
       </div>

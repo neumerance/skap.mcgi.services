@@ -8,11 +8,11 @@ class GameSequenceChannel extends BaseChannel {
     this.onRenderSequence = () => {}
   }
 
-  newQuestion(sequenceName) {
+  newQuestion(questionNumber) {
     this.socket.emit('new-sequence', {
       gameId: this.gameId,
-      sequenceType: 'questions',
-      sequenceName
+      sequenceComponent: 'NewQuestionSequence',
+      data: { questionNumber }
     })
   }
 

@@ -1,8 +1,7 @@
 <template>
   <component
-    v-if="componentData.currentComponent && componentData.videoUrl"
     :is="componentData.currentComponent"
-    :sequence-video-url="componentData.videoUrl"
+    :data="componentData.data"
     :end-of-sequence-callback="resetComponentData"
   >
   </component>
@@ -13,7 +12,7 @@ import GameSequenceChannel from '@/channels/GameSequenceChannel.js'
 
 const componentData = reactive({
   currentComponent: null,
-  videoUrl: null
+  data: null
 })
 const props = defineProps({
   gameId: String
@@ -31,10 +30,10 @@ const resetComponentData = () => {
 
 const gameSequenceChannel = new GameSequenceChannel(props.gameId)
 gameSequenceChannel.onRenderSequence = async (message) => {
-  const { sequenceAnimationComponent, videoUrl } = message
+  const { sequenceComponent, data } = message
 
-  componentData.videoUrl = videoUrl
-  const comp = await loadComponent(sequenceAnimationComponent)
+  componentData.data = data
+  const comp = await loadComponent(sequenceComponent)
   componentData.currentComponent = comp.default
 }
 gameSequenceChannel.listen()

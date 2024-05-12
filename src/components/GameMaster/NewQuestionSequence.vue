@@ -1,6 +1,6 @@
 <template>
   <video ref="sequencePlayer" class="video-js">
-    <source :src="props.sequenceVideoUrl" type="video/mp4" />
+    <source :src="getVideoUrl()" type="video/mp4" />
   </video>
 </template>
 <script setup>
@@ -8,7 +8,7 @@ import { reactive, shallowRef, onMounted, watch, onUnmounted } from 'vue'
 import videojs from 'video.js'
 
 const props = defineProps({
-  sequenceVideoUrl: String,
+  data: { type: Object, default: { questionNumber: 1 } },
   endOfSequenceCallback: Function
 })
 const componentData = reactive({
@@ -17,6 +17,8 @@ const componentData = reactive({
 const sequencePlayer = shallowRef(null)
 const initializePlayer = () => {
   componentData.player = videojs(sequencePlayer.value, {
+    videoWidth: 1280,
+    videoHeight: 720,
     muted: true,
     controls: false,
     autoplay: true,
@@ -27,9 +29,14 @@ const initializePlayer = () => {
     sequencePlayer.value.style.opacity = 0
   })
 }
+
+const getVideoUrl = () => {
+  return `https://skap-assets.us-sea-1.linodeobjects.com/questions/Q${props.data.questionNumber}.mp4`
+}
+
 const updateSrc = (newProps) => {
   componentData.player.src({
-    src: newProps.sequenceVideoUrl,
+    src: getVideoUrl(),
     type: 'video/mp4'
   })
   sequencePlayer.value.style.opacity = 1
@@ -48,10 +55,14 @@ onUnmounted(() => {
 })
 </script>
 <style lang="scss" scoped>
-video {
+video,
+.video-js {
   width: 1280px;
   height: 720px;
+  max-width: 1280px;
+  max-height: 720px;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
+  background: transparent;
 }
 </style>
