@@ -26,6 +26,16 @@
 
     <div v-if="pageData.gameJoined">
       <div class="questions">
+        <h4 class="is-size-4 has-text-weight-light">Player Buzzers</h4>
+        <button class="button is-small" @click="gameSequenceChannel.playerAttention('Player One')">
+          Player 1
+        </button>
+        <button class="button is-small" @click="gameSequenceChannel.playerAttention('Player Two')">
+          Player 2
+        </button>
+      </div>
+      <div class="questions">
+        <h4 class="is-size-4 has-text-weight-light">New Question Sequence</h4>
         <button class="button is-small" @click="gameSequenceChannel.newQuestion('1')">
           Question #1
         </button>

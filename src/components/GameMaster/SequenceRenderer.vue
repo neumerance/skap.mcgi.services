@@ -1,40 +1,37 @@
 <template>
-  <component
-    :is="componentData.currentComponent"
+  <NewQuestionSequence
+    v-if="componentData.currentComponent === 'NewQuestionSequence'"
+    :key="`${componentData._id}-NewQuestionSequence`"
     :data="componentData.data"
-    :end-of-sequence-callback="resetComponentData"
-  >
-  </component>
+  />
+  <PlayerAttentionSequence
+    v-if="componentData.currentComponent === 'PlayerAttentionSequence'"
+    :key="`${componentData._id}-PlayerAttentionSequence`"
+    :data="componentData.data"
+  />
 </template>
 <script setup>
 import { reactive } from 'vue'
 import GameSequenceChannel from '@/channels/GameSequenceChannel.js'
+import NewQuestionSequence from '@/components/GameMaster/NewQuestionSequence.vue'
+import PlayerAttentionSequence from '@/components/GameMaster/PlayerAttentionSequence.vue'
 
 const componentData = reactive({
   currentComponent: null,
-  data: null
+  data: null,
+  _id: null
 })
 const props = defineProps({
   gameId: String
 })
 
-const loadComponent = async (componentName) => {
-  return await import(`./${componentName}.vue`)
-}
-
-const resetComponentData = () => {
-  componentData.currentComponent = null
-  componentData.sequenceAnimationComponent = null
-  componentData.videoUrl = null
-}
-
 const gameSequenceChannel = new GameSequenceChannel(props.gameId)
 gameSequenceChannel.onRenderSequence = async (message) => {
-  const { sequenceComponent, data } = message
+  const { sequenceComponent, data, _id } = message
 
+  componentData._id = _id
   componentData.data = data
-  const comp = await loadComponent(sequenceComponent)
-  componentData.currentComponent = comp.default
+  componentData.currentComponent = sequenceComponent
 }
 gameSequenceChannel.listen()
 </script>

@@ -31,6 +31,6 @@ main {
   height: 720px;
   max-width: 1280px;
   max-height: 720px;
-  background: #2fbf03;
+  background: #008000;
 }
 </style>
