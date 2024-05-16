@@ -16,6 +16,8 @@ services:
       - app.js
     env_file:
       - .env
+    volumes:
+      - node_modules:/app/node_modules
 
   nginx:
     image: nginx:latest
@@ -28,3 +30,6 @@ services:
       - /etc/letsencrypt/live/skap.mcgi.services/privkey.pem:/etc/nginx/certs/privkey.pem
     depends_on:
       - app
+
+volumes:
+  node_modules: {}
