@@ -1,7 +1,9 @@
 <template>
-  <video ref="sequencePlayer" class="video-js">
-    <source :src="props.src" type="video/mp4" />
-  </video>
+  <main>
+    <video ref="sequencePlayer" class="video-js">
+      <source :src="props.src" type="video/mp4" />
+    </video>
+  </main>
 </template>
 <script setup>
 import videojs from 'video.js'
