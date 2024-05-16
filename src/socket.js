@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client'
 
-const socket = io('ws://localhost:3000', {
+const socket = io(import.meta.env.VITE_SOCKET_IO_URL, {
   reconnectionDelayMax: 10000,
   auth: {},
   query: {}
