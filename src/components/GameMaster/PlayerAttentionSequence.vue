@@ -1,13 +1,24 @@
 <template>
-  <VideoPlayer :src="componentData.videoSrc" :on-ended="toggleVideoSrc" />
+  <div class="sequence">
+    <h1
+      :class="{
+        'title--slideUp': componentData.sequencePart === 'OUTRO',
+        'title--slideDown': componentData.sequencePart === 'INTRO'
+      }"
+      class="title is-size-1 has-text-weight-bold is-uppercase"
+    >
+      {{ props.data.playerName }}
+    </h1>
+    <VideoPlayer :src="componentData.videoSrc" :on-ended="toggleVideoSrc" />
+  </div>
 </template>
 <script setup>
 import { reactive } from 'vue'
 import VideoPlayer from '@/components/VideoPlayer.vue'
 
-// const props = defineProps({
-//   data: { type: Object, default: () => ({ playerName: '<player>', delay: 3000 }) }
-// })
+const props = defineProps({
+  data: { type: Object, default: () => ({ playerName: '<player>', delay: 3000 }) }
+})
 
 const setVideoUrl = () => {
   const videoSrcs = {
@@ -30,11 +41,12 @@ const toggleVideoSrc = () => {
     setTimeout(() => {
       componentData.sequencePart = 'OUTRO'
       setVideoUrl()
-    }, 3000)
+    }, props.data.delay)
   }
 }
 </script>
 <style lang="scss" scoped>
+.sequence,
 video,
 .video-js {
   width: 1280px;
@@ -44,5 +56,56 @@ video,
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   background: transparent;
+}
+@keyframes slideDown {
+  0% {
+    top: 0px;
+    opacity: 0;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    top: 530px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    top: 530px;
+    opacity: 1;
+  }
+  15% {
+    opacity: 0;
+  }
+  100% {
+    top: 0px;
+    opacity: 0;
+  }
+}
+
+.sequence {
+  position: relative;
+
+  video,
+  .video-js {
+    z-index: 1020;
+  }
+
+  .title {
+    position: absolute;
+    top: 530px;
+    color: #024b88;
+    width: 100%;
+    text-align: center;
+    z-index: 1030;
+  }
+  .title--slideDown {
+    animation: slideDown 1.2s forwards;
+  }
+  .title--slideUp {
+    animation: slideUp 1.2s forwards;
+  }
 }
 </style>
