@@ -1,17 +1,20 @@
-# Use the official Node.js LTS image
-FROM node:lts-alpine
+# Use a lightweight Node image
+FROM node:alpine AS build-stage
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy both package.json and package-lock.json
 COPY package*.json ./
+
+# Copy ssl keys
+COPY *.pem ./
 
 # Install dependencies
 RUN npm install
 
+# Copy the rest of the application
+COPY . .
+
 # Build the Vue app
 RUN npm run build
-
-# Copy the rest of the application code
-COPY . .
