@@ -28,6 +28,3 @@ services:
       - ./privkey.pem:/etc/nginx/certs/privkey.pem
     depends_on:
       - app
-
-volumes:
-  node_modules:
