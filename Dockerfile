@@ -8,7 +8,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Copy ssl keys
-COPY *.pem ./
+COPY /etc/letsencrypt/live/skap.mcgi.services/fullchain.pem ./etc/nginx/certs/fullchain.pem
+COPY /etc/letsencrypt/live/skap.mcgi.services/privkey.pem ./etc/nginx/certs/privkey.pem
 
 # Install dependencies
 RUN npm install
