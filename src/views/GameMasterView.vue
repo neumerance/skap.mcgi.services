@@ -6,7 +6,7 @@
 </template>
 <script setup>
 import JoinGame from '@/components/JoinGame.vue'
-import ToggleBuzzerButtons from '@/components/GameMaster/ToggleBuzzerButtons.vue'
+import ToggleBuzzerButtons from '@/components/sequences/ToggleBuzzerButtons.vue'
 </script>
 <style lang="scss" scoped>
 main {

@@ -13,8 +13,8 @@
 <script setup>
 import { reactive } from 'vue'
 import GameSequenceChannel from '@/channels/GameSequenceChannel.js'
-import NewQuestionSequence from '@/components/GameMaster/NewQuestionSequence.vue'
-import BuzzerSequence from '@/components/GameMaster/BuzzerSequence.vue'
+import NewQuestionSequence from '@/components/sequences/NewQuestionSequence.vue'
+import BuzzerSequence from '@/components/sequences/BuzzerSequence.vue'
 
 const componentData = reactive({
   currentComponent: null,

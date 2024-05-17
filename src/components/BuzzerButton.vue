@@ -8,8 +8,7 @@
   </button>
 </template>
 <script setup>
-import { onMounted, reactive } from 'vue'
-import socket from '@/socket.js'
+import { reactive } from 'vue'
 import BuzzerChannel from '@/channels/BuzzerChannel.js'
 
 const componentData = reactive({ buzzerEnabled: false })
@@ -18,10 +17,10 @@ const props = defineProps({ playerId: String, gameId: String })
 const buzzerChannel = new BuzzerChannel(props.playerId, props.gameId)
 
 // buzzer callbacks
-buzzerChannel.onBuzzerEnabled = (message) => {
+buzzerChannel.onBuzzerEnabled = (_message) => {
   componentData.buzzerEnabled = true
 }
-buzzerChannel.onBuzzerDisabled = (message) => {
+buzzerChannel.onBuzzerDisabled = (_message) => {
   componentData.buzzerEnabled = false
 }
 

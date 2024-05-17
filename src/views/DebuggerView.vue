@@ -4,11 +4,10 @@
   </main>
 </template>
 <script setup>
-import { reactive, onMounted } from 'vue'
+import { reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import GameChannel from '@/channels/GameChannel.js'
-import GameSequenceChannel from '@/channels/GameSequenceChannel.js'
-import SequenceRenderer from '@/components/GameMaster/SequenceRenderer.vue'
+import SequenceRenderer from '@/components/sequences/SequenceRenderer.vue'
 
 const route = useRoute()
 const gameId = route.params.gameId
