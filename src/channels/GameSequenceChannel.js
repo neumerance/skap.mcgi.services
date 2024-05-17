@@ -19,7 +19,7 @@ class GameSequenceChannel extends BaseChannel {
   playerAttention(playerName) {
     this.socket.emit('new-sequence', {
       gameId: this.gameId,
-      sequenceComponent: 'PlayerAttentionSequence',
+      sequenceComponent: 'BuzzerSequence',
       data: { playerName, delay: 4000 }
     })
   }

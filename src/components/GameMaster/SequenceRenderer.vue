@@ -4,9 +4,9 @@
     :key="`${componentData._id}-NewQuestionSequence`"
     :data="componentData.data"
   />
-  <PlayerAttentionSequence
-    v-if="componentData.currentComponent === 'PlayerAttentionSequence'"
-    :key="`${componentData._id}-PlayerAttentionSequence`"
+  <BuzzerSequence
+    v-if="componentData.currentComponent === 'BuzzerSequence'"
+    :key="`${componentData._id}-BuzzerSequence`"
     :data="componentData.data"
   />
 </template>
@@ -14,7 +14,7 @@
 import { reactive } from 'vue'
 import GameSequenceChannel from '@/channels/GameSequenceChannel.js'
 import NewQuestionSequence from '@/components/GameMaster/NewQuestionSequence.vue'
-import PlayerAttentionSequence from '@/components/GameMaster/PlayerAttentionSequence.vue'
+import BuzzerSequence from '@/components/GameMaster/BuzzerSequence.vue'
 
 const componentData = reactive({
   currentComponent: null,

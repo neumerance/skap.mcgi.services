@@ -31,9 +31,8 @@ const initializePlayer = (src = null) => {
     componentData.player = videojs(sequencePlayer.value, {
       videoWidth: 1280,
       videoHeight: 720,
-      muted: true,
-      controls: false,
       autoplay: true,
+      // muted: true,
       debug: false,
       ...props.options
     })

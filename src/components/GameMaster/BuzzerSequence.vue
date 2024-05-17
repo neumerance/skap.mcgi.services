@@ -2,8 +2,8 @@
   <div class="sequence">
     <h1
       :class="{
-        'title--slideUp': componentData.sequencePart === 'OUTRO',
-        'title--slideDown': componentData.sequencePart === 'INTRO'
+        'title--slideUp': componentData.sequencePart === 'INTRO',
+        'title--slideDown': componentData.sequencePart === 'OUTRO'
       }"
       class="title is-size-1 has-text-weight-bold is-uppercase"
     >
@@ -22,8 +22,10 @@ const props = defineProps({
 
 const setVideoUrl = () => {
   const videoSrcs = {
-    INTRO: 'https://skap-assets.us-sea-1.linodeobjects.com/chargens/name_chargens/INTRO.mp4',
-    OUTRO: 'https://skap-assets.us-sea-1.linodeobjects.com/chargens/name_chargens/OUTRO.mp4'
+    INTRO:
+      'https://skap-assets.us-sea-1.linodeobjects.com/chargens/name_chargens/INTRO.mp4?t=123232',
+    OUTRO:
+      'https://skap-assets.us-sea-1.linodeobjects.com/chargens/name_chargens/OUTRO.mp4?t=3435332'
   }
   componentData.videoSrc = videoSrcs[componentData.sequencePart]
 }
@@ -57,30 +59,30 @@ video,
   transition: opacity 0.3s ease-in-out;
   background: transparent;
 }
-@keyframes slideDown {
+@keyframes slideUp {
   0% {
-    top: 0px;
     opacity: 0;
+    bottom: -50px;
   }
   55% {
     opacity: 0;
   }
   100% {
-    top: 530px;
     opacity: 1;
+    bottom: 135px;
   }
 }
 
-@keyframes slideUp {
+@keyframes slideDown {
   0% {
-    top: 530px;
+    bottom: 135px;
     opacity: 1;
   }
-  15% {
+  45% {
     opacity: 0;
   }
   100% {
-    top: 0px;
+    bottom: -50px;
     opacity: 0;
   }
 }
@@ -95,17 +97,18 @@ video,
 
   .title {
     position: absolute;
-    top: 530px;
     color: #024b88;
     width: 100%;
     text-align: center;
     z-index: 1030;
   }
-  .title--slideDown {
-    animation: slideDown 1.2s forwards;
-  }
   .title--slideUp {
+    bottom: -50px;
     animation: slideUp 1.2s forwards;
+  }
+  .title--slideDown {
+    bottom: 135px;
+    animation: slideDown 1.2s forwards;
   }
 }
 </style>
